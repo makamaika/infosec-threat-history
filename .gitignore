@@ -1,0 +1,13 @@
+# 参考資料PDF（85MB・サイト本体には不要。リポジトリを軽く保つため除外）
+# 自分の記録用にリポジトリへ含めたい場合は、この行を消してください。
+20260619_pre.pdf
+
+# Claude Code / プレビュー用のローカル設定
+.claude/
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+.vscode/

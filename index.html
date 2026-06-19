@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>情報セキュリティ脅威の40年史 ｜ IPA「10大脅威」で見る、脅威はどう変わったか</title>
+  <meta name="description" content="IPA『情報セキュリティ10大脅威 2026』を軸に、コンピュータウイルスの黎明期からAI時代まで、サイバー脅威の歴史を時系列でたどるドキュメンタリー風タイムライン。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- 上部の進行バー -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+  <!-- 固定ヘッダー：タイトル + 再生コントロール -->
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="dot" aria-hidden="true"></span>
+      情報セキュリティ脅威の<strong>40年史</strong>
+    </div>
+    <div class="topbar-controls">
+      <span class="year-readout" id="yearReadout">1986</span>
+      <button id="playBtn" class="play-btn" aria-label="自動再生">
+        <span class="play-ico" id="playIco">▶</span><span id="playLabel">自動再生</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 左側のタイムライン・レール -->
+  <nav class="rail" id="rail" aria-label="年代ナビゲーション"></nav>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" data-year="1986">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-kicker">情報セキュリティ10大脅威 2026</p>
+        <h1 class="hero-title">
+          脅威は、<br /><span class="grad">どう変わってきたか</span>
+        </h1>
+        <p class="hero-sub">
+          1986年の「いたずら」から、2026年の「AI」まで。<br />
+          IPA『情報セキュリティ10大脅威』を道しるべに、<br class="sp-br" />サイバー脅威の40年を時系列でたどる。
+        </p>
+        <div class="hero-cta">
+          <a href="#prologue" class="btn-primary" id="startBtn">▶ 歴史をたどる</a>
+          <span class="hero-hint">スクロール、または「自動再生」で映像のように進みます</span>
+        </div>
+        <div class="hero-stats">
+          <div><b id="statYears">40</b><span>年間の脅威史</span></div>
+          <div><b id="statEvents">30+</b><span>の事件・節目</span></div>
+          <div><b>2026</b><span>最新の10大脅威</span></div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL</div>
+    </section>
+
+    <!-- ===== ERAS（JSで生成）===== -->
+    <div id="eras"></div>
+
+    <!-- ===== IPA 2026 一覧 ===== -->
+    <section class="ipa" id="ipa2026" data-year="2026">
+      <div class="section-head">
+        <p class="kicker">IPA — 2026</p>
+        <h2>いま、私たちが直面する10大脅威</h2>
+        <p class="section-lead">
+          独立行政法人 情報処理推進機構（IPA）が毎年公表する「情報セキュリティ10大脅威」。
+          前年に社会的影響が大きかった事案を、約250名の専門家らが審議・投票して選ぶ。
+          〈組織〉向けは順位付き、〈個人〉向けは2024年版から順位を付けず五十音順で公表されている。
+        </p>
+      </div>
+      <div class="ipa-facts" id="ipaFacts">
+        <div class="fact reveal"><b>2006年〜</b><span>毎年公表。今年で20年</span></div>
+        <div class="fact reveal d1"><b>2016年〜</b><span>「個人」「組織」別に</span></div>
+        <div class="fact reveal d2"><b>約250名</b><span>専門家の投票で選出</span></div>
+        <div class="fact reveal d3"><b>2024年〜</b><span>「個人」は順位なし（五十音順）</span></div>
+      </div>
+      <div class="ipa-cols">
+        <div class="ipa-col">
+          <h3 class="ipa-col-title"><span class="badge-org">組織</span> 向けの脅威（順位付き）</h3>
+          <ol class="ipa-list" id="ipaOrg"></ol>
+        </div>
+        <div class="ipa-col">
+          <h3 class="ipa-col-title"><span class="badge-ind">個人</span> 向けの脅威（五十音順）</h3>
+          <ul class="ipa-list ipa-list--ind" id="ipaInd"></ul>
+        </div>
+      </div>
+      <p class="ipa-note">
+        ※ <b>初選出年</b>＝2016年以降でその脅威が初めて選ばれた年。
+        <span class="lg-new">赤</span>は今回初めて／久しぶりに選ばれた注目の脅威。
+        出典：<a href="https://www.ipa.go.jp/security/10threats/10threats2026.html" target="_blank" rel="noopener">IPA 情報セキュリティ10大脅威 2026</a>
+      </p>
+    </section>
+
+    <!-- ===== 個人の被害（数字） ===== -->
+    <section class="personal" id="personal" data-year="2026">
+      <div class="section-head">
+        <p class="kicker">具体例 — 数字で見る</p>
+        <h2>いま、「個人」を襲う脅威の実数</h2>
+        <p class="section-lead">
+          〈個人〉向け10大脅威は、抽象的な不安ではなく統計に裏付けられている。
+          フィッシング・クレカ不正・ネットバンキング不正送金は、いずれも近年「過去最多」を更新中だ。
+        </p>
+      </div>
+      <div class="stats-grid" id="statsGrid"></div>
+    </section>
+
+    <!-- ===== 昔と今の比較 ===== -->
+    <section class="compare" id="compare" data-year="2026">
+      <div class="section-head">
+        <p class="kicker">共通項 — 昔とどう違うのか</p>
+        <h2>40年で、脅威の「質」が変わった</h2>
+        <p class="section-lead">
+          個々の事件は様々だが、時系列で並べると一本の流れが見える。
+          脅威は技術の問題から、<b>お金・組織・国家・人の心理</b>の問題へと変質してきた。
+        </p>
+      </div>
+      <div class="compare-grid" id="compareGrid"></div>
+    </section>
+
+    <!-- ===== まとめ ===== -->
+    <section class="summary" id="summary" data-year="2026">
+      <div class="summary-inner">
+        <p class="kicker">まとめ</p>
+        <h2>「いたずら」から「社会の問題」へ</h2>
+        <div class="summary-body" id="summaryBody">
+          <p>
+            40年前、コンピュータの脅威は技術自慢の<b>「愉快犯」</b>のものだった。被害は限定的で、攻撃者は孤立した個人。
+            しかしネットワークが社会の隅々まで行き渡るにつれ、脅威の動機は<b>金銭</b>へ、担い手は<b>組織犯罪や国家</b>へと移った。
+          </p>
+          <p>
+            手口も変わった。かつては技術的な脆弱性を突くのが主だったが、いまは<b>人の心理</b>を突く詐欺（フィッシング・サポート詐欺・BEC）が前面に出て、
+            <b>AI</b>がその巧妙さを一段と増幅している。攻撃は単発から<b>産業（RaaS）</b>へ、標的は不特定多数から<b>特定組織と、その委託先という「弱い環」</b>へ。
+            一社の被害がサプライチェーンを通じて連鎖し、病院や工場、燃料供給まで止める時代になった。
+          </p>
+          <p>
+            そして重要なのは、<b>個人と組織の脅威がもはや地続き</b>だということ。個人のパスワード使い回しによる不正ログインが、組織への侵入口になる。
+            だからこそIPAは脅威を〈個人〉と〈組織〉に分けて毎年問い直し、2025年に「地政学的リスク」、2026年に「AIの利用をめぐるサイバーリスク」を新たに選び出した。
+          </p>
+          <p class="summary-close">
+            脅威の歴史は、<b>私たち自身の社会のデジタル化の歴史</b>でもある。<br />
+            だから——昔を知ることは、これからの守り方を知ることでもある。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 出典 / クレジット ===== -->
+    <footer class="site-footer" id="sources">
+      <div class="footer-inner">
+        <div class="footer-block">
+          <h3>主な出典</h3>
+          <ul id="sourceList" class="source-list"></ul>
+          <p class="footer-mini">各事件の詳細・年月は、IPA・JPCERT/CC・報道等の公開情報に基づき記載しています。</p>
+        </div>
+        <div class="footer-block">
+          <h3>このレポートについて</h3>
+          <p class="footer-mini">
+            IPA「情報セキュリティ10大脅威2026」から興味を持った脅威を選び、その具体例を調べる——
+            本サイトは、各脅威を<b>時系列（歴史）</b>に並べ替え、「昔とどう違うのか」という<b>共通項</b>を一つの物語としてまとめたレポートです。
+          </p>
+        </div>
+      </div>
+      <p class="footer-copy">情報セキュリティ脅威の40年史</p>
+    </footer>
+
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
