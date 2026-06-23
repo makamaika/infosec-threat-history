@@ -193,8 +193,9 @@
       { id: "y2026", t: "'26" }
     ];
     rail.innerHTML = shown.map(function (s) {
-      return '<button class="rail-item" data-go="' + s.id + '">' + s.t +
-        '<span></span></button>';
+      return '<button class="rail-item" data-go="' + s.id + '">' +
+        '<span class="rail-dot" aria-hidden="true"></span>' +
+        '<span class="rail-yr">' + s.t + '</span></button>';
     }).join("");
     rail.querySelectorAll(".rail-item").forEach(function (b) {
       b.addEventListener("click", function () {
